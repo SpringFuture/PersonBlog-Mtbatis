@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+		<link rel="stylesheet" href="/css/me.css">
+		<title> My 女神 </title>
+		<style type="text/css">
+			body {
+				background-image: url(/img/l.jpg);
+				background-size: cover;
+			}
+			div.wrap {
+				margin-top: 150px;
+				perspective: 1000px;
+				perspective-origin: 50% 50%;
+			}
+
+			div.cube {
+				margin: auto;
+				position: relative;
+				height: 200px;
+				width: 200px;
+				transform-style: preserve-3d;
+			}
+
+			.cube>div {
+				position: absolute;
+				box-sizing: border-box;
+				padding: 10px;
+				height: 100%;
+				width: 100%;
+				opacity: 0.8;
+				background-color: white;
+				border: solid 2px #0000FF;
+				color: #000000;
+				animation: glow 5s linear infinite alternate;
+			}
+
+			@keyframes glow {
+				0% {
+					color: red;
+				}
+
+				50% {
+					color: green;
+				}
+
+				100% {
+					color: blue;
+				}
+			}
+
+			.front {
+				background-image:url(/img/1.JPG);
+				background-position: center;
+				background-size: cover;
+				transform: translateZ(100px);
+			}
+
+			.back {
+				background-image: url(/img/2.JPG);
+				background-position: center;
+				background-size: cover;
+				transform: translateZ(-100px) rotateY(180deg);
+			}
+
+			.right {
+				background-image: url(/img/3.JPG);
+				background-position: center;
+				background-size: cover;
+				transform: rotateY(-270deg) translateX(100px);
+				transform-origin: top right;
+			}
+
+			.left {
+				background-image: url(/img/4.JPG);
+				background-position: center;
+				background-size: cover;
+				transform: rotateY(270deg) translateX(-100px);
+				transform-origin: center left;
+			}
+
+			.top {
+				background-image: url(/img/5.JPG);
+				background-position: center;
+				background-size: cover;
+				transform: rotateX(-270deg) translateY(-100px);
+				transform-origin: top center;
+			}
+
+			.bottom {
+				background-image: url(/img/6.JPG);
+				background-position: center;
+				background-size: cover;
+				transform: rotateX(270deg) translateY(100px);
+				transform-origin: bottom center;
+			}
+
+			@keyframes rotate {
+				from {
+					transform: rotateX(0deg) rotateY(0deg);
+				}
+
+				to {
+					transform: rotateX(360deg) rotateY(360deg);
+				}
+			}
+
+			.cube {
+				animation: rotate 20s infinite linear;
+			}
+
+			.wrap:hover .front {
+				background-image: url(/img/7.JPG);
+				background-position: center;
+				background-size: cover;
+				transform: translateZ(200px);
+			}
+
+			.wrap:hover .back {
+				background-image: url(/img/8.JPG);
+				background-position: center;
+				background-size: cover;
+				transform: translateZ(-200px) rotateY(180deg);
+			}
+
+			.wrap:hover .right {
+				background-image: url(/img/9.JPG);
+				background-position: center;
+				background-size: cover;
+				transform: rotateY(-270deg) translateZ(100px) translateX(100px);
+			}
+
+			.wrap:hover .left {
+				background-image: url(/img/10.JPG);
+				background-position: center;
+				background-size: cover;
+				transform: rotateY(270deg) translateZ(100px) translateX(-100px);
+			}
+
+			.wrap:hover .top {
+				background-image: url(/img/11.JPG);
+				background-position: center;
+				background-size: cover;
+				transform: rotateX(-270deg) translateZ(100px) translateY(-100px);
+			}
+
+			.wrap:hover .bottom {
+				background-image: url(/img/12.JPG);
+				background-position: center;
+				background-size: cover;
+				transform: rotateX(270deg) translateZ(100px) translateY(100px);
+			}
+
+			.cube>div {
+				transition: transform 0.2s ease-in;
+			}
+		</style>
+	</head>
+	<body>
+		<!--导航-->
+		<nav class="ui inverted attached segment m-padded-tb-mini m-shadow-small">
+			<div class="ui container">
+				<div class="ui inverted secondary stackable menu">
+					<h2 class="ui teal header item">Blog</h2>
+					<a href="#" th:href="@{/}" class="m-item item m-mobile-hide"><i class="home icon"></i>首页</a>
+					<a href="#" th:href="@{/blog/types/{id}(id=-1)}" class="m-item item m-mobile-hide"><i class="idea icon"></i>分类</a>
+					<a href="#" th:href="@{/blog/tags/{id}(id=-1)}" class="m-item item m-mobile-hide"><i class="tags icon"></i>标签</a>
+					<a href="#" th:href="@{/blog/archives}" class="m-item item m-mobile-hide"><i class="clone icon"></i>归档</a>
+					<a href="#" th:href="@{/blog/about}" class="m-item item m-mobile-hide"><i class="info icon"></i>关于我</a>
+				</div>
+			</div>
+			<a href="#" class="ui menu toggle icon button m-top-right m-mobile-show">
+				<i class="sidebar icon"></i>
+			</a>
+		</nav>
+
+		<div class="wrap">
+			<div class="cube">
+				<div class="front" style=color:#000000;>
+					<center> <b> COME ON!♥ </b> </center>
+				</div>
+				<div class="back" style=color:#000000;>
+					<center> <b> COME ON!♥ </b> </center>
+				</div>
+				<div class="top" style=color:#000000;>
+					<center> <b>COME ON!♥ </b> </center>
+				</div>
+				<div class="bottom" style=color:#000000;>
+					<center> <b> COME ON!♥ </b> </center>
+				</div>
+				<div class="left" style=color:#000000;>
+					<center> <b> COME ON!♥ </b> </center>
+				</div>
+				<div class="right" style=color:#000000;>
+					<center> <b> COME ON!♥ </b> </center>
+				</div>
+			</div>
+		</div>
+		<!--底部footer-->
+		<div class="ui inverted vertical footer segment">
+			<div class="ui center aligned container">
+				<div class="ui stackable inverted divided grid">
+					<div class="three wide column">
+						<div class="ui inverted link list">
+							<div class="item">
+								<img src="/img/id.JPG" class="ui rounded image" alt="" style="width:110px ;"/>
+							</div>
+						</div>
+					</div>
+					<div class="three wide column">
+						<h4 class="ui inverted header">个人座右铭</h4>
+						<div class="ui inverted link list">
+							<a href="#" class="item">得之坦然</a>
+							<a href="#" class="item">失之淡然</a>
+							<a href="#" class="item">争之必然</a>
+							<a href="#" class="item">顺其自然</a>
+						</div>
+					</div>
+					<div class="three wide column">
+						<h4 class="ui inverted header">联系我</h4>
+						<div class="ui inverted link list">
+							<a href="#" class="item">姓名:Cong Zhen Jie</a>
+							<a href="#" class="item">QQ:2442571481</a>
+							<a href="#" class="item">邮件:2442571481@qq.com</a>
+						</div>
+					</div>
+					<div class="seven wide column">
+						<h4 class="ui inverted header">关于博客</h4>
+						<p>这是我的个人博客，会分享关于编程、生活、写作、思考感悟的相关内容，希望可以收获更多......</p>
+					</div>
+				</div>
+				<div class="ui inverted section divider"></div>
+				<p class="m-text-spacxed">Copyright@2020-2021CongZhenJie Designed By CongZhenJie</p>
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+		<script>
+			$('.menu.toggle').click(function(){
+				$('.m-item').toggleClass('m-mobile-hide');
+			});
+		</script>
+	</body>
+</html>
